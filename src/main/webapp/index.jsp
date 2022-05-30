@@ -213,7 +213,7 @@
 			</div>
 			<div class="d-none d-lg-block col-lg-9">
 				<div style="margin-left:40px ; margin-top:20px;text-align:left">
-					<a href="/csmain.cscenter" class="footerLink"><span>자주 묻는 질문</span></a><span style="margin-left:20px" class="footerBar">|</span>
+					<a href="/csmain.cscenter" class="footerLink"><span>JAJU 묻는 질문</span></a><span style="margin-left:20px" class="footerBar">|</span>
 					<a href="/csemail.cscenter" class="footerLink"><span style="margin-left:20px">1 : 1 문의</span></a><span style="margin-left:20px" class="footerBar">|</span>
 					<a href="/csmap.cscenter" class="footerLink"><span style="margin-left:20px">찾아오시는 길</span></a><br>
 					<div style="margin-top:30px ; text-align:left; margin-bottom:15px">

@@ -125,6 +125,8 @@ public class CSCenterController extends HttpServlet {
 				int cpage =1; // cpage는 1로 설정
 				int searchCategory = Integer.parseInt(request.getParameter("searchCategory"));//검색 카테고리
 				String searchTarget = request.getParameter("searchTarget");//검색어
+				System.out.println(searchCategory);
+				System.out.println(searchTarget);
 				List<NoticeDTO> list = ndao.searchNotice(searchTarget, searchCategory, cpage);//리스트 출력
 				request.setAttribute("list", list);//리스트 담기
 				request.setAttribute("searchCategory", searchCategory);//카테고리 담기

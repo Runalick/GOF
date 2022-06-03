@@ -123,10 +123,7 @@
 								<div class="col-8">
 									<input type="text" placeholder="물건명을 입력해주세요" name="item" id="item" value="${dto.item }" maxlength=30><br>
             						<input type="text" placeholder="가격을 입력해주세요" name="item_price" value="${dto.item_price }" id="item_price" maxlength=9 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /><br>
-					            	<input type="button" id="cancel_Btn" style="display: none" value="첨부 취소">
-					            	<c:if test="${dto.fileName!=null}">
-				            			<input type="button" value="사진 제거" id="delete">
-				            		</c:if>
+				            			<input type="button" value="사진 제거" id="delete" style="display:none">
 				            		<label for="upload_file">사진 첨부</label>
 				            		<input type="file" name="file" id="upload_file" accept="image/*" onchange="isFileImg(this)">
 								</div>
@@ -198,6 +195,14 @@
 	       reader.readAsDataURL(imgFile);
 	     })
 	     
+	     
+	     let uploadFile = $("#upload_file").val();
+	     
+	     window.onload=function(){
+	    	 if(${dto.fileName!=null}){
+	    		 $("#delete").css("display","inline-block")
+	    	 }
+	     }
 
 	     $("#delete").on("click",function(){
 				if(${loginID==null}){
@@ -207,6 +212,8 @@
 				}
 	    	 $("#i"+${dto.seq}).attr("src","/img/pig2.png");//삭제 버튼 클릭 시 이미지 바꿈
 	    	 $("#isImgDeleted").val("Y");//이미지 삭제 하는 경우
+	    	 $("#delete").css("display","none")
+	    	 $("#upload_file").val("");
 	     })
 		
 	  	$("#goToList").on("click",function(){
@@ -274,44 +281,32 @@
 			}
 		  })
 		  
-		  let uploadFile = $("#upload_file").val();
-		  	function isFileImg(obj){
+
+		  	function isFileImg(obj){//파일 onchange function
 		  		
 			  pathPoint = obj.value.lastIndexOf('.');
 			  filePoint = obj.value.substring(pathPoint+1,obj.length);
 			  fileType=filePoint.toLowerCase();
-			  console.log($("#upload_file").val())
 			  
 			  if(fileType!='jpg'&&fileType!='png'&&fileType!='jpeg'&&fileType!='gif'){
-
+				alert("이미지 파일만 등록이 가능합니다.");
 				  if(${dto.fileName!=null}){
-					$("#img_section").attr("src","files/${dto.fileName }");
+					$("#i"+${dto.seq}).attr("src","files/${dto.fileName }");
+					$("#isImgDeleted").val("N");
 				  }else{
-					$("#img_section").attr("src","/img/pig2.png");	  
+					$("#i"+${dto.seq}).attr("src","/img/pig2.png");	  
 				  }
-				 alert("이미지 파일만 등록이 가능합니다.");
+
 					$("#upload_file").val("");
 				 return false;
 			  }
-			  
-
-			  
-			  if(uploadFile!=null){
-				  $("#cancel_Btn").css("display","inline-block");
-			  }else{
-				  $("#cancel_Btn").css("display","none");
+			  		  
+			  if($("#upload_file").val()!=null){
+				  $("#delete").css("display","inline-block");
 			  }
 	  			}
 		  	
-			  $("#cancel_Btn").on("click",function(){
-				  if(${dto.fileName!=null}){
-				   	$("#i"+${dto.seq}).attr("src","files/${dto.fileName }");				  
-				  }else{
-					  $("#i"+${dto.seq}).attr("src","/img/pig2.png");					  
-				  }
-					$("#upload_file").val("");
-			    	 $("#isImgDeleted").val("N");
-			  })
+
        
 	 </script>
 </body>

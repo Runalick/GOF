@@ -149,7 +149,7 @@
 										</div>
 										<div class="row" align=center id="contentsBox">
 											<div class="col-12">
-												<textarea class="editable" id="contentsTD" name="contents" style="white-space:normal" disabled >${dto.contents}</textarea>
+												<textarea class="editable" id="contentsTD" name="contents" style="white-space:pre-wrap" disabled >${dto.contents}</textarea>
 											</div>
 										</div>
 										<div class="row" >

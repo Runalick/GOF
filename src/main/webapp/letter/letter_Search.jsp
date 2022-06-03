@@ -75,7 +75,7 @@ body {
 <body>
   <b><font size="3" color="gray">메세지를 보낼 사람의 닉네임을 검색하세요.</font></b>
   <br><br>
-  <input type="text"  id="receiver">
+  <input type="text"  id="receiver" placeholder="공백으로 검색 시 전체 회원 출력">
   <input type="button" value="검색" id="searchBtn">
   <br>
   <br>
